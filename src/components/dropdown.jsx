@@ -1,14 +1,15 @@
 import React from 'react';
-import { HiOutlineHeart } from 'react-icons/hi';
+import { HiOutlineHeart, HiHeart } from 'react-icons/hi';
 
 const CurrencyDropdown = ({
 	currencies,
 	currency,
 	setCurrency,
-	favourite,
+	favourites,
 	handleFavourite,
 	title,
 }) => {
+	const isFavourite = (curr) => favourites.includes(currency);
 	return (
 		<div>
 			<label
@@ -26,22 +27,39 @@ const CurrencyDropdown = ({
 					className='w-full p-2 border border-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500'
 				>
 					{/* render favourites*/}
-					<option value disabled>
-						_____________________
-					</option>
-					{currencies.map((currency) => {
+					{favourites.map((fav) => {
 						return (
-							<option value={currency} key={currency}>
-								{currency}
+							<option
+								className='bg-indigo-500 text-white'
+								value={fav}
+								key={fav}
+							>
+								{fav}
 							</option>
 						);
 					})}
+					<option value disabled>
+						&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
+					</option>
+					{currencies
+						.filter((c) => !favourites.includes(c))
+						.map((currency) => {
+							return (
+								<option value={currency} key={currency}>
+									{currency}
+								</option>
+							);
+						})}
 				</select>
 				<button
 					onClick={() => handleFavourite(currency)}
-					className='absolute inset-y-0 right-0 pr-5 flex items-center text-sm leading-5'
+					className='absolute inset-y-0 right-0 pr-5 flex items-center text-lg leading-5'
 				>
-					<HiOutlineHeart />
+					{isFavourite(currency) ? (
+						<HiHeart className='text-indigo-600' />
+					) : (
+						<HiOutlineHeart />
+					)}
 				</button>
 			</div>
 		</div>
