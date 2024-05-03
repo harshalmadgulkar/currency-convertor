@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CurrencyDropdown from './dropdown';
 import { HiSwitchHorizontal } from 'react-icons/hi';
+import { FaGithub } from 'react-icons/fa';
 
 const CurrencyConvertor = () => {
 	const [currencies, setCurrencies] = useState([]);
@@ -69,9 +70,21 @@ const CurrencyConvertor = () => {
 	console.log('favourites', favourites);
 	return (
 		<div className='max-w-xl mx-auto my-10 p-5 bg-white rounded-lg shadow-md'>
-			<h2 className='mb-5 text-2xl font-semibold text-gray-700'>
-				Currency Convertor
-			</h2>
+			<div>
+				<h2 className='mb-5 text-2xl font-semibold text-gray-700 '>
+					Currency Convertor
+					{/*Github Icon will open the source code of this
+	app in a new tab*/}
+					<FaGithub
+						className='inline-block ml-4 hover:cursor-pointer'
+						onClick={() =>
+							window.open(
+								'https://github.com/harshalmadgulkar/currency-convertor'
+							)
+						}
+					/>
+				</h2>
+			</div>
 			<div className='grid grid-cols-1 sm:grid-cols-3 gap-4 items-end'>
 				<CurrencyDropdown
 					favourites={favourites}
@@ -87,7 +100,7 @@ const CurrencyConvertor = () => {
 						onClick={swapCurrencies}
 						className='p-2 bg-gray-200 rounded-full cursor-pointer hover:bg-gray-300'
 					>
-						<HiSwitchHorizontal className='text-xl text-gray-700' />
+						<HiSwitchHorizontal className='text-xl text-indigo-700' />
 					</button>
 				</div>
 				<CurrencyDropdown
