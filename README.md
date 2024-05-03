@@ -24,7 +24,7 @@ With support for multiple currencies and real-time exchange rates, this tool mak
 [Firebase.js]: https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase
 [Tailwind-url]: https://firebase.google.com/
 
-## Demo
+## Live Demo
 
 You can try out the Currency Convertor here:
 
